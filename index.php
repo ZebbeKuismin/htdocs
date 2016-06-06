@@ -24,23 +24,23 @@
 </div>
     
 <div id="home" class="row">
+    <div class="card col s10 offset-s1"></div>
+</div>
+    
+<div id="games" class="row">Test 2</div>
+<div id="catalog" class="row">Test 3</div>
+<div id="users" class="row">
     <div class="col s3 offset-s1">
         <img src="blogo.png" style="width:100%;height:100%">
     </div>
     <div class="card col s7" style="color:#3B3F51">
         <h1>beaujibby</h1>
         <div class="border" style="height:1px;background-color:#ee6e73"></div>
-        <h6 style="word-wrap:break-word">about hello world who are you i am me who are not me you are not me yeah ignore me this is for testinggggg</h6>
+        <h6 style="word-wrap:break-word">filler content filler content filler content filler content filler content filler content filler content</h6>
         <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
         <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Message</a>
         <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Add Friend</a>
-    </div>
-    
-    <div class="card col s2 offset-s4">
-        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Message</a>
-    </div>
-    <div class="card col s3 offset-s1">
-        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Add Friend</a>
+        <div style="height:10px"></div>
     </div>
 
     <div class="card col s10 offset-s1" style="color:#3B3F51">
@@ -62,10 +62,7 @@
         <div class="col s3"><h5 style="text-align:center">User Number</h5><h5 style="text-align:center">1</h6></div>
     </div>
 </div>
-    
-<div id="games" class="row">Test 2</div>
-<div id="catalog" class="row">Test 3</div>
-<div id="users" class="row">Test 4</div>
+
 <div id="forum" class="row">Test 5</div>
 
 <footer class="page-footer">
@@ -78,8 +75,8 @@
 <div class="col l4 offset-l2 s12">
 <h5 class="white-text">Links</h5>
 <ul>
-<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+<li><a class="grey-text text-lighten-3" href="about">About</a></li>
+<li><a class="grey-text text-lighten-3" href="mailto:beaujibby@gmail.com">Contact Us</a></li>
 <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
 <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
 </ul>
