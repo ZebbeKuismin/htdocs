@@ -86,9 +86,7 @@
         </ul>
     </div>
 </div>
-    
-<div id="games" class="row">Test 2</div>
-<div id="catalog" class="row">Test 3</div>
+
 <div id="users" class="row">
     <div class="col s3 offset-s1">
         <img src="blogo.png" style="width:100%;height:100%">
@@ -123,7 +121,6 @@
     </div>
 </div>
 
-<div id="forum" class="row">Test 5</div>
 
 <footer class="page-footer">
 <div class="container"> <!--Remove style later-->
