@@ -2,11 +2,12 @@
 <html>
 <head>
 <title>magicusxyz</title>
-<link rel='stylesheet' type='text/css' href='css/stylesheet.css'/>
-<link rel='stylesheet' type='text/css' href='css/materialize.css'/>
+<link rel='stylesheet' type='text/css' href='/css/stylesheet.css'/>
+<link rel='stylesheet' type='text/css' href='/css/materialize.css'/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/materialize.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/materialize.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
 
 </head>
 <body style="background:#3B3F51">
@@ -30,68 +31,10 @@
         </ul>
     </div>
 </nav>
-    
-<div id="home" class="row">
-    <div class="col s3 offset-s1">
-        <img src="blogo.png" style="width:100%;height:100%">
-    </div>
-    <div class="card col s7" style="color:#3B3F51">
-        <h1>Hello beaujibby</h1>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
-        <br>
-        <div class="input-field col s7">
-            <input id="status" type="text" class="validate">
-            <label for="status">Status</label>
-        </div>
-        <div class="col s7">
-        <img src="/svg/wallet.svg" style="float:left" title="cash">
-        <p style="font-size:24px;line-height:24px">100</p>
-        <img src="/svg/coin.svg" style="float:left" title="coins">
-        <p style="font-size:24px;line-height:24px">50</p>
-        <br>
-        </div>
-    </div>
-    <div class="card col s10 offset-s1" style="color:#3B3F51">
-        <ul class="collection with-header">
-            <li class="collection-header"><h4 style="color:#3B3F51">Notifications</h4></li>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Messages
-                <span class="badge" style="color:#3B3F51">4</span>
-            </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Friends Online
-                <span class="badge" style="color:#3B3F51">4</span>
-            </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">New Items
-                <span class="badge" style="color:#3B3F51">4</span>
-            </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Forum Replies
-                <span class="badge" style="color:#3B3F51">4</span>
-            </a>
-        </ul>
-    </div>
-    <div class="card col s10 offset-s1" style="color:#3B3F51">
-        <ul class="collection with-header">
-            <li class="collection-header"><h4 style="color:#3B3F51">Friend Activity</h4></li>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Admin
-                <p>went to the park</p>
-            </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">John Doe
-                <p>played golf</p>
-            </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Jane Doe
-                <p>wrote a book</p>
-            </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Link
-                <p>found it dangerous to go alone</p>
-            </a>
-        </ul>
-    </div>
-</div>
-    
-<div id="games" class="row">Test 2</div>
-<div id="catalog" class="row">Test 3</div>
+
 <div id="users" class="row">
     <div class="col s3 offset-s1">
-        <img src="blogo.png" style="width:100%;height:100%">
+        <img src="/blogo.png" style="width:100%;height:100%">
     </div>
     <div class="card col s7" style="color:#3B3F51">
         <h1>beaujibby</h1>
@@ -122,8 +65,6 @@
         <div class="col s3"><h5 style="text-align:center">User Number</h5><h5 style="text-align:center">1</h6></div>
     </div>
 </div>
-
-<div id="forum" class="row">Test 5</div>
 
 <footer class="page-footer">
 <div class="container"> <!--Remove style later-->
