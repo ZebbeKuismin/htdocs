@@ -34,7 +34,7 @@
 
 <div id="users" class="row">
     <div class="col s3 offset-s1">
-        <img src="/blogo.png" style="width:100%;height:100%">
+        <img src="/images/blogo.png" style="width:100%;height:100%">
     </div>
     <div class="card col s7" style="color:#3B3F51">
         <h1>beaujibby</h1>

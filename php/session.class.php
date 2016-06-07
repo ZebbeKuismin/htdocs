@@ -7,8 +7,6 @@ class Session
 	private $OnLoginFailedCallback;
 	private $OnLogoutCallback;
 
-	public $SteamID;
-
 	public function __construct($Server = 'DEFAULT')
 	{
 	}
@@ -130,66 +128,6 @@ class Session
 			//echo '<a class = "result" href = "http://www.astrum.xyz/profile/">'.$user['username'].' '.$user['blurb'].'</a><br>'; //fix css
         }
         echo '</div>';
-    }
-
-	public function EnterMessage($author)
-	{
-		$content = $_POST['messagebox'];
-		$content = str_replace("'","\\'",$content);
-		$content = str_replace('"','\\"',$content);
-		$query = "INSERT INTO `messages`(`content`, `author_id`, `author`) VALUES ('".$content."','".$author['id']."','".$author['username']."')";
-		$sql = new mysqli("localhost","username","password","sqlserver");
-		$sql->query($query);
-		$sql->close();
-	}
-	
-	public function UploadImage()
-	{
-		$validextensions = array("jpeg", "jpg", "png", 'JPEG','PNG','JPG');
-		$maxsize = 99999999;
-		$temporary = explode(".", $_FILES["file"]["name"]);
-		$file_extension = end($temporary);
-		if ((($_FILES["file"]["type"] == "image/png") || ($_FILES["file"]["type"] =="image/jpg") || ($_FILES["file"]["type"] == "image/jpeg")
-		) && ($_FILES["file"]["size"] < $maxsize)//Approx. 100kb files can beuploaded.
-		&& in_array($file_extension, $validextensions)) {
-
-			$size = getimagesize($_FILES['file']['tmp_name']);
-			$type = $size['mime'];
-			$imgfp = fopen($_FILES['file']['tmp_name'], 'rb');
-			$size = $size[3];
-			$name = $_FILES['file']['name'];
-
-			$sql = new mysqli("localhost","username","password","sqlserver");
-			$imgfp = base64_encode(stream_get_contents($imgfp));
-			$update = "UPDATE sqlserver.imageblob set image='".$imgfp."',image_type='".$type."', image_name='".$name."', image_size='".$size."' whereuser_id=".$account['id'];
-			
-			$sql->query($update);
-			$sql->close();
-		}
-	}
-	
-	
-	public function getImage($id)
-	{
-		
-		$sql = new mysqli("localhost","username","password","sqlserver");
-		$img = "SELECT image, image_type FROM sqlserver.imageblob WHERE user_id=".$id;
-		$img=$sql->query($img);
-		$sql->close();
-		$img=$img->fetch_assoc();
-		return $img;
-	}
-	
-	
-	public function getChatImage($id)
-	{
-		$sql = new mysqli("localhost","username","password","sqlserver");
-		$img = "SELECT chatimage, image_type FROM sqlserver.imageblob WHERE user_id=".$id;
-		$img=$sql->query($img);
-		$sql->close();
-		$img=$img->fetch_assoc();
-		return $img;
-	}
-		
+    }	
 }
 ?>
