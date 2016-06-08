@@ -36,7 +36,7 @@
 <div id="forum" class="row">
     <div class="card col s10 offset-s1">
     <h1>But where do the ducks go?</h1>
-    <table class="bordered highlight responsive-table">
+    <table class="bordered highlight table">
         <thead>
           <tr>
               <th data-field="id">Author</th>
@@ -46,16 +46,16 @@
 
         <tbody>
           <tr class="message-col">
-            <td style="border-right:1px solid;max-width:0px;border-color:#C5C5C5"><h5>Holden</h5><h6>Joined 6 03 16</h6><h6>157 Posts</h6></td>
+            <td style="border-right:1px solid;width:100px;border-color:#C5C5C5"><h5>Holden</h5><h6>Joined 6 03 16</h6><h6>157 Posts</h6></td>
             <td>I think the ducks go far</td>
           </tr>
           <tr class="message-col">
-            <td style="border-right:1px solid;max-width:0px;border-color:#C5C5C5"><h5>Cab Driver</h5><h6>Joined 6 03 16</h6><h6>157 Posts</h6></td>
+            <td style="border-right:1px solid;width:100px;border-color:#C5C5C5"><h5>Taxi_Driver</h5><h6>Joined 6 03 16</h6><h6>157 Posts</h6></td>
             <td>The fish get frozen in the ice</td>
           </tr>
           <tr class="message-col">
-            <td style="border-right:1px solid;max-width:0px;border-color:#C5C5C5"><h5>Dylan</h5><h6>Joined 6 03 16</h6><h6>157 Posts</h6></td>
-            <td><p>CarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCars</p></td>
+            <td style="border-right:1px solid;width:100px;border-color:#C5C5C5"><h5>Dylan</h5><h6>Joined 6 03 16</h6><h6>157 Posts</h6></td>
+            <td><p style="word-break:break-word">CarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCarsCars</p></td>
           </tr>
         </tbody>
       </table>
