@@ -31,35 +31,28 @@
     </div>
 </nav>
     
-<div class="row">
-    <div class="col s6 offset-s5">
-        <ul class="tabs">
-            <li class="tab col s2"><a class="active" href="#login">Login</a></li>
-            <li class="tab col s2"><a href="#signup">Sign Up</a></li>
-        </ul>
+<div id="catalog" class="row">
+    <div class="card col s10 offset-s1">
+        <h1>Games</h1>
     </div>
-    <div id="login" class="card col s6 offset-s5"><h3>Login</h3></div>
-    <div id="signup" class="card col s6 offset-s5">
-        <h3>Sign Up</h3>
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate">
-                    <label for="icon_prefix">Username</label>
-                </div>
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">lock</i>
-                    <input id="icon_lock" type="password" class="validate">
-                    <label for="icon_lock">Password</label>
-                </div>
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">email</i>
-                    <input id="icon_email" type="password" class="validate">
-                    <label for="icon_email">Email</label>
-                </div>
+    <div class="col s3 offset-s1">
+        <div class="card" style="overflow: hidden;">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="/catalog/catalogimages/picture.png">
             </div>
-        </form>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Rice Bowl Hunt<i class="material-icons right">more_vert</i></span>
+                <p><a href="#!">beaujibby</a></p>
+            </div>
+            <div class="card-action">
+                <a href="#">Play Now</a>
+                <a href="#">View Game</a>
+            </div>
+            <div class="card-reveal" style="display: none; transform: translateY(0px);">
+                <span class="card-title grey-text text-darken-4">Rice Bowl Hunt<i class="material-icons right">close</i></span>
+                <p>Hunt for rice imported from the rice mines of the farthest reaches of the vast expansive Chinese Himalayas, but beware...these grains are not to be taken lightly...</p>
+            </div>
+        </div>
     </div>
 </div>
 
