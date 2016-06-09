@@ -7,9 +7,10 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/materialize.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
 
 </head>
-<body style="background:#3B3F51">
+<body style = "background-color:#3B3F51">
 
 <ul id="moredropdown" class="dropdown-content">
     <li><a href="#!">Settings</a></li>
@@ -31,14 +32,31 @@
     </div>
 </nav>
     
-<div class="row">
+<div class="row" style="background: url('/images/loginscreen.png');background-size:cover;min-height:800px">
     <div class="col s6 offset-s5">
         <ul class="tabs">
             <li class="tab col s2"><a class="active" href="#login">Login</a></li>
             <li class="tab col s2"><a href="#signup">Sign Up</a></li>
         </ul>
     </div>
-    <div id="login" class="card col s6 offset-s5"><h3>Login</h3></div>
+    <div id="login" class="card col s6 offset-s5">
+        <h3>Login</h3>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Username</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lock</i>
+                    <input id="icon_lock" type="password" class="validate">
+                    <label for="icon_lock">Password</label>
+                </div>
+                <input type="submit" value="Login" style="background-color:#ee6e73" class="btn waves-effect waves-light">
+            </div>
+        </form>
+    </div>
     <div id="signup" class="card col s6 offset-s5">
         <h3>Sign Up</h3>
         <form class="col s12">
@@ -55,9 +73,20 @@
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">email</i>
-                    <input id="icon_email" type="password" class="validate">
+                    <input id="icon_email" type="email" class="validate">
                     <label for="icon_email">Email</label>
                 </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lock</i>
+                    <input id="icon_lock" type="password" class="validate">
+                    <label for="icon_lock">Confirm Password</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">today</i>
+                    <input id="birthday" type="date" class="datepicker">
+                    <label for="birthday">Birthday</label>
+                </div>
+                <input type="submit" value="Create Account" style="background-color:#ee6e73" class="btn waves-effect waves-light">
             </div>
         </form>
     </div>
