@@ -13,7 +13,7 @@
 <body style = "background-color:#3B3F51">
 <?php 
 $path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/php/session.class.php'";
+$path .= "/php/session.class.php";
 include_once($path);
 ?>
 <ul id="moredropdown" class="dropdown-content">
