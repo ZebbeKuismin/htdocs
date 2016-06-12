@@ -21,6 +21,7 @@
 <nav>
     <div class="nav-wrapper">
     <a href="/" class="brand-logo">Magicus</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/home">Home</a></li>
             <li><a href="/games">Games</a></li>
@@ -28,6 +29,17 @@
             <li><a href="/users">Users</a></li>
             <li><a href="/forum">Forum</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="moredropdown">More<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/games">Games</a></li>
+            <li><a href="/catalog">Catalog</a></li>
+            <li><a href="/users">Users</a></li>
+            <li><a href="/forum">Forum</a></li>
+            <li><a href="#!">Settings</a></li>
+            <li><a href="#!">Exchange</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Logout</a></li>
         </ul>
     </div>
 </nav>

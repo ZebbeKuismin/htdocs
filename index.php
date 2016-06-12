@@ -11,11 +11,20 @@
 
 </head>
 <body style = "background-color:#3B3F51">
+    
 <?php 
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/php/session.class.php";
-include_once($path);
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    $path .= "/php/session.class.php";
+    include_once($path);
+    $sess = new Session();
+    $sess->Init();
+    if(isset($_COOKIE["session"]))
+    {
+        $account = $sess->Verify($_COOKIE["session"]);
+        if($account!=0){header('Location: /home');}
+    }
 ?>
+
 <ul id="moredropdown" class="dropdown-content">
     <li><a href="#!">Settings</a></li>
     <li><a href="#!">Exchange</a></li>
@@ -25,6 +34,7 @@ include_once($path);
 <nav>
     <div class="nav-wrapper">
     <a href="/" class="brand-logo">Magicus</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/home">Home</a></li>
             <li><a href="/games">Games</a></li>
@@ -32,6 +42,17 @@ include_once($path);
             <li><a href="/users">Users</a></li>
             <li><a href="/forum">Forum</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="moredropdown">More<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/games">Games</a></li>
+            <li><a href="/catalog">Catalog</a></li>
+            <li><a href="/users">Users</a></li>
+            <li><a href="/forum">Forum</a></li>
+            <li><a href="#!">Settings</a></li>
+            <li><a href="#!">Exchange</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -45,52 +66,52 @@ include_once($path);
     </div>
     <div id="login" class="card col s6 offset-s5">
         <h3>Login</h3>
-        <form class="col s12">
+        <form class="col s12" id="login-form">
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate">
+                    <input id="icon_prefix" type="text" class="validate" name="username">
                     <label for="icon_prefix">Username</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lock</i>
-                    <input id="icon_lock" type="password" class="validate">
+                    <input id="icon_lock" type="password" class="validate" name="password">
                     <label for="icon_lock">Password</label>
                 </div>
-                <input type="submit" value="Login" style="background-color:#ee6e73" class="btn waves-effect waves-light">
+                <a style="background-color:#ee6e73" id="login-button" class="btn waves-effect waves-light">Login</a>
             </div>
         </form>
     </div>
     <div id="signup" class="card col s6 offset-s5">
         <h3>Sign Up</h3>
-        <form class="col s12">
+        <form class="col s12" id="signup-form">
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate">
+                    <input id="icon_prefix" type="text" class="validate" name="username">
                     <label for="icon_prefix">Username</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lock</i>
-                    <input id="icon_lock" type="password" class="validate">
+                    <input id="icon_lock" type="password" class="validate" name="password">
                     <label for="icon_lock">Password</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">email</i>
-                    <input id="icon_email" type="email" class="validate">
+                    <input id="icon_email" type="email" class="validate" name="email">
                     <label for="icon_email">Email</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lock</i>
-                    <input id="icon_lock" type="password" class="validate">
+                    <input id="icon_lock" type="password" class="validate" name="confirm_password">
                     <label for="icon_lock">Confirm Password</label>
                 </div>
                 <div class="input-field col s12">
                     <i class="material-icons prefix">today</i>
-                    <input id="birthday" type="date" class="datepicker">
+                    <input id="birthday" type="date" class="datepicker" name="birthday">
                     <label for="birthday">Birthday</label>
                 </div>
-                <input type="submit" value="Create Account" style="background-color:#ee6e73" class="btn waves-effect waves-light">
+                <a style="background-color:#ee6e73" id="signup-button" class="btn waves-effect waves-light">Create Account</a>
             </div>
         </form>
     </div>

@@ -1,7 +1,6 @@
 <?php
 class Session
 {
-
 	private $OpenID;
 	private $OnLoginCallback;
 	private $OnLoginFailedCallback;
@@ -17,6 +16,10 @@ class Session
 
 	public function Init()
 	{
+        define('DB_SERVER', "localhost");
+        define('DB_USER', "username");
+        define('DB_PASSWORD', "password");
+        define('DB_TABLE', "sqlserver");
 	}
 
 	function generateRandomString($length) {
@@ -64,7 +67,7 @@ class Session
 		$id = $sql->query($id);
 		$id = $id->fetch_assoc()["MAX(ID)"];
 		$id+=1;
-
+        
 		$cookie=$this->generateRandomString(30);
 		
 		$create = "INSERT INTO sqlserver.accounts (`id`, `username`, `password`, `cookie`,`ip`) VALUES (".$id.",'".$username."','".$password."','".$cookie."','".$ip."')";
@@ -128,6 +131,151 @@ class Session
 			//echo '<a class = "result" href = "http://www.astrum.xyz/profile/">'.$user['username'].' '.$user['blurb'].'</a><br>'; //fix css
         }
         echo '</div>';
-    }	
+    }
+    
+    public function getUsername($cookie)
+    {
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
+    if ($conn->connect_error)
+    {
+        trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+        echo 'unable to connect to database';
+    }
+    
+    $query = "SELECT username FROM accounts WHERE cookie = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt)
+    {
+        $stmt->bind_param("s", $cookie); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+        $stmt->execute();
+        $stmt->bind_result($username_result);
+        $stmt->fetch();
+        $stmt->close();
+        $conn->close();
+        return $username_result;
+    }
+        else
+        {
+            trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
+        }
+        $conn->close();
+        return '';
+    }
+    public function getEmail($cookie)
+    {
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
+    if ($conn->connect_error)
+    {
+        trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+        echo 'unable to connect to database';
+    }
+    
+    $query = "SELECT email FROM accounts WHERE cookie = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt)
+    {
+        $stmt->bind_param("s", $cookie); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+        $stmt->execute();
+        $stmt->bind_result($email_result);
+        $stmt->fetch();
+        $stmt->close();
+        $conn->close();
+        return $email_result;
+    }
+        else
+        {
+            trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
+        }
+        $conn->close();
+        return '';
+    }
+    public function getBirthday($cookie)
+    {
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
+    if ($conn->connect_error)
+    {
+        trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+        echo 'unable to connect to database';
+    }
+    
+    $query = "SELECT birthday FROM accounts WHERE cookie = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt)
+    {
+        $stmt->bind_param("s", $cookie); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+        $stmt->execute();
+        $stmt->bind_result($birthday_result);
+        $stmt->fetch();
+        $stmt->close();
+        $conn->close();
+        return $birthday_result;
+    }
+        else
+        {
+            trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
+        }
+        $conn->close();
+        return '';
+    }
+    public function getCash($cookie)
+    {
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
+    if ($conn->connect_error)
+    {
+        trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+        echo 'unable to connect to database';
+    }
+    
+    $query = "SELECT cash FROM accounts WHERE cookie = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt)
+    {
+        $stmt->bind_param("s", $cookie); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+        $stmt->execute();
+        $stmt->bind_result($cash_result);
+        $stmt->fetch();
+        $stmt->close();
+        $conn->close();
+        return $cash_result;
+    }
+        else
+        {
+            trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
+        }
+        $conn->close();
+        return '';
+    }
+    public function getCoins($cookie)
+    {
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
+    if ($conn->connect_error)
+    {
+        trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+        echo 'unable to connect to database';
+    }
+    
+    $query = "SELECT coins FROM accounts WHERE cookie = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt)
+    {
+        $stmt->bind_param("s", $cookie); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+        $stmt->execute();
+        $stmt->bind_result($coins_result);
+        $stmt->fetch();
+        $stmt->close();
+        $conn->close();
+        return $coins_result;
+    }
+        else
+        {
+            trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
+        }
+        $conn->close();
+        return '';
+    }
+    public function getCookie()
+    {
+        
+    }
 }
 ?>
