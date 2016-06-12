@@ -10,11 +10,6 @@ if(isset($_POST['username']) && isset($_POST['password']))
     echo 'm';
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
-    define('DB_SERVER', "localhost");
-    define('DB_USER', "username");
-    define('DB_PASSWORD', "password");
-    define('DB_TABLE', "sqlserver");
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
     if ($conn->connect_error)
     {

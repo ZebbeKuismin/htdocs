@@ -11,11 +11,6 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $confirm_password = $_POST['confirm_password'];
     $email = $_POST['email'];
     $birthday = $_POST['birthday'];
-    
-    define('DB_SERVER', "localhost");
-    define('DB_USER', "username");
-    define('DB_PASSWORD', "password");
-    define('DB_TABLE', "sqlserver");
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
     if ($conn->connect_error)
     {
