@@ -4,10 +4,8 @@ $path .= "/php/session.class.php";
 include_once($path);
 $sess = new Session();
 $sess->Init();
-echo 'l';
 if(isset($_POST['username']) && isset($_POST['password']))
 {
-    echo 'm';
     $username = $_POST['username'];
     $password = $_POST['password'];
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);

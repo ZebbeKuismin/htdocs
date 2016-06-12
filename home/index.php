@@ -64,7 +64,10 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     
 <div id="home" class="row">
     <div class="col s3 offset-s1">
-        <img src="/images/blogo.png" style="width:100%;height:100%">
+        <?php
+            $img = strtoupper(substr($sess->getUsername($cookie),0,1));
+            echo '<img src="/profileimages/'.$img.'.png" style="width:100%;height:100%">'
+        ?>
     </div>
     <div class="card col s7" style="color:#3B3F51">
         <h1>Hello <?php echo $sess->getUsername($cookie); ?></h1>
