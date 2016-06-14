@@ -20,9 +20,7 @@
 </ul>
 <nav>
     <div class="nav-wrapper">
-    <a href="/" class="breadcrumb">Magicus</a>
-        <a href="/forum" class="breadcrumb">Forum</a>
-        <?php if(isset($_GET['id'])){echo '<a href="/forum" class="breadcrumb">Forum #'.$_GET['id'].'</a>';}?>   
+    <a href="/" class="brand-logo">Magicus</a> 
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/home">Home</a></li>
@@ -44,40 +42,39 @@
             <li><a id="logout">Logout</a></li>
         </ul>
     </div>
-</nav>  
-    
-<div id="forum" class="row">
-    <div class="card col s10 offset-s1">
-    <h1>SubForum Title</h1>
-    <table class="bordered highlight responsive-table">
-        <thead>
-          <tr>
-              <th data-field="id">Name</th>
-              <th data-field="name">Author</th>
-              <th data-field="price">Replies</th>
-              <th data-field="price">Last Post</th>
-          </tr>
-        </thead>
+</nav>
 
-        <tbody>
-          <tr class="thread-col" data-href="/forum/viewthread?id=1">
-            <td>Where to the ducks go?Where to the ducks go? But Where do the ducks goWhere do the ducks g</td>
-            <td>HoldenNNNNN123456789</td>
-            <td>100000</td>
-            <td>12 06 16</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>4</td>
-          </tr>
-        </tbody>
-      </table>
+<div id="users" class="row">
+    <div class="col s3 offset-s1">
+        <img src="/images/blogo.png" style="width:100%;height:100%">
+    </div>
+    <div class="card col s7" style="color:#3B3F51">
+        <h1>beaujibby</h1>
+        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <h6 style="word-wrap:break-word">filler content filler content filler content filler content filler content filler content filler content</h6>
+        <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
+        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Message</a>
+        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Add Friend</a>
+        <div style="height:10px"></div>
+    </div>
+
+    <div class="card col s10 offset-s1" style="color:#3B3F51">
+        <h3>Achievements</h3>
+        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <img src="/svg/gameboy.svg" title="From the 80s">
+        <img src="/svg/program.svg" title="Made this thing">
+        <img src="/svg/tank.svg" title="Crashed a tank">
+        <img src="/svg/smile.svg" title="Winked at someone">
+        <img src="/svg/football.svg" title="Played footbal">
+        <img src="/svg/bamboo.svg" title="Found some bamboo">
+    </div>
+    <div class="card col s10 offset-s1" style="color:#3B3F51">
+        <h3>Statistics</h3>
+        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <div class="col s3"><h5 style="text-align:center">Date Joined</h5><h5 style="text-align:center">06 03 16</h6></div>
+        <div class="col s3"><h5 style="text-align:center">Forum Posts</h5><h5 style="text-align:center">0</h6></div>
+        <div class="col s3"><h5 style="text-align:center">Friend Count</h5><h5 style="text-align:center">0</h6></div>
+        <div class="col s3"><h5 style="text-align:center">User Number</h5><h5 style="text-align:center">1</h6></div>
     </div>
 </div>
 

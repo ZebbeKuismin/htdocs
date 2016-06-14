@@ -46,7 +46,10 @@ $(document).ready(function(){
             //data: {pass:"passwordText",oldPass:"oldPass"}
             success: function(data)   // A function to be called if request succeeds
             {
-                location.reload();
+                if(data=='success')
+                {
+                    location.reload();
+                }
             }
         });
     });
@@ -61,5 +64,11 @@ $(document).ready(function(){
                 location.reload();
             }
         });
+    });
+    $('#user-search-button').click(function(){
+        if($('#user-search-bar').val()!="")
+        {
+            location.search="username="+$('#user-search-bar').val();
+        }
     });
 });

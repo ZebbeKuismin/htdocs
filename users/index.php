@@ -13,14 +13,14 @@
 <body style="background:#3B3F51">
 
 <ul id="moredropdown" class="dropdown-content">
-    <li><a href="#!">Settings</a></li>
-    <li><a href="#!">Exchange</a></li>
+    <li><a href="/settings">Settings</a></li>
+    <li><a href="/exchange">Exchange</a></li>
     <li class="divider"></li>
-    <li><a href="#!">Logout</a></li>
+    <li><a id="logout">Logout</a></li>
 </ul>
 <nav>
     <div class="nav-wrapper">
-    <a href="/" class="brand-logo">Magicus</a>
+    <a href="/" class="brand-logo">Magicus</a> 
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/home">Home</a></li>
@@ -36,46 +36,68 @@
             <li><a href="/catalog">Catalog</a></li>
             <li><a href="/users">Users</a></li>
             <li><a href="/forum">Forum</a></li>
-            <li><a href="#!">Settings</a></li>
-            <li><a href="#!">Exchange</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/exchange">Exchange</a></li>
             <li class="divider"></li>
-            <li><a href="#!">Logout</a></li>
+            <li><a id="logout">Logout</a></li>
         </ul>
     </div>
 </nav>
 
-<div id="users" class="row">
-    <div class="col s3 offset-s1">
-        <img src="/images/blogo.png" style="width:100%;height:100%">
+<div id="search" class="row">
+    <div class="card col s10 offset-s1">
+        <h1>User Search</h1>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="user-search-bar" type="text" class="validate">
+                    <label for="user-search-bar">Username</label>
+                </div>
+                <a id="user-search-button" class="btn waves-effect waves-light" type="submit" name="username" style="background-color:#ee6e73">Search
+                    <i class="material-icons right">send</i>
+                </a>
+            </div>
+        </form>
     </div>
-    <div class="card col s7" style="color:#3B3F51">
-        <h1>beaujibby</h1>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
-        <h6 style="word-wrap:break-word">filler content filler content filler content filler content filler content filler content filler content</h6>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
-        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Message</a>
-        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Add Friend</a>
-        <div style="height:10px"></div>
-    </div>
-
-    <div class="card col s10 offset-s1" style="color:#3B3F51">
-        <h3>Achievements</h3>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
-        <img src="/svg/gameboy.svg" title="From the 80s">
-        <img src="/svg/program.svg" title="Made this thing">
-        <img src="/svg/tank.svg" title="Crashed a tank">
-        <img src="/svg/smile.svg" title="Winked at someone">
-        <img src="/svg/football.svg" title="Played footbal">
-        <img src="/svg/bamboo.svg" title="Found some bamboo">
-    </div>
-    <div class="card col s10 offset-s1" style="color:#3B3F51">
-        <h3>Statistics</h3>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
-        <div class="col s3"><h5 style="text-align:center">Date Joined</h5><h5 style="text-align:center">06 03 16</h6></div>
-        <div class="col s3"><h5 style="text-align:center">Forum Posts</h5><h5 style="text-align:center">0</h6></div>
-        <div class="col s3"><h5 style="text-align:center">Friend Count</h5><h5 style="text-align:center">0</h6></div>
-        <div class="col s3"><h5 style="text-align:center">User Number</h5><h5 style="text-align:center">1</h6></div>
-    </div>
+    <?php
+    if(isset($_GET['username']))
+    {
+        echo '<div id="results" class="col s10 offset-s1">
+            <div class="col s3">
+                <div class="card" style="overflow: hidden;">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="/profileimages/B.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">beaujibby<i class="material-icons right">more_vert</i></span>
+                    </div>
+                    <div class="card-action">
+                        <a href="/users/profile?username=beaujibby">View Profile</a>
+                    </div>
+                    <div class="card-reveal" style="display: none; transform: translateY(0px);">
+                        <span class="card-title grey-text text-darken-4">beaujibby<i class="material-icons right">close</i></span>
+                        <p>Cookies are the best, not from the west, I\'m gonna pass this test, and then I\'ll beat the rest...</p>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    }
+    ?>
+    <!--?php
+        if(isset($_GET['username']))
+        {
+            echo '<div class="col s10 offset-s1">
+                <div class="white col s6" style="border:1px solid #3B3F51">
+                <img src="/profileimages/B.png" style="width:35px;height:35px;float:left">
+                <h4>beaujibby</h4>
+                </div>
+                <div class="white col s6" style="border:1px solid #3B3F51">
+                    <h4>beaujibby</h4>
+                </div>
+            </div>';
+        }
+    ?-->
 </div>
 
 <footer class="page-footer">

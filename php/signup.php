@@ -1,4 +1,6 @@
 <?php
+$starter_cash=13;
+$starter_coins=31;
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/php/session.class.php";
 include_once($path);
@@ -35,29 +37,35 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
             $id+=1;
             $ip=$_SERVER['REMOTE_ADDR'];
             $cookie=generateRandomString(100);
-            $query = "INSERT INTO accounts (`id`, `username`, `password`, `cookie`, `ip`, `email`) VALUES (?,?,?,?,?,?)";
+            $query = "INSERT INTO accounts (`id`, `username`, `password`, `cookie`, `ip`, `email`) VALUES (?,?,?,?,?,?,?,?)";
             $stmt = $conn->prepare($query);
             if ($stmt)
             {
-                $stmt->bind_param("isssss",$id,$username,$password,$cookie,$ip,$email); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+                $stmt->bind_param("isssssii",$id,$username,$password,$cookie,$ip,$email,$starter_cash,$starter_coins); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
                 $stmt->execute();
-                //$stmt->bind_result($finish);
-                //$stmt->fetch();
                 $stmt->close();
                 echo 'success';
                 setcookie("session",$cookie,time()+3600*24,"/");
+                $social = "INSERT INTO social (`id`, `username`, `cookie`) VALUES (?,?,?)";
+                $stmt = $conn->prepare($social);
+                if ($stmt)
+                {
+                    $stmt->bind_param("iss",$id,$username,$cookie); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+                    $stmt->execute();
+                    $stmt->close();
+                }
+            }
+            else
+            {
+                echo 'username taken';
             }
         }
-        else
-        {
-            echo 'username taken';
-        }
-    }
         else
         {
             trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
         }
         $conn->close();
+    }
 }
 else
 {
