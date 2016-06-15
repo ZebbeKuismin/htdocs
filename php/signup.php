@@ -52,20 +52,21 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
                 {
                     $stmt->bind_param("iss",$id,$username,$cookie); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
                     $stmt->execute();
+                    echo 'success';
                     $stmt->close();
                 }
-            }
-            else
-            {
-                echo 'username taken';
             }
         }
         else
         {
-            trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
+            echo 'username taken';
         }
-        $conn->close();
     }
+    else
+    {
+        trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
+    }
+        $conn->close();
 }
 else
 {
