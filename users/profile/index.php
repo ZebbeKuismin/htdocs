@@ -26,6 +26,10 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     {
         $account=0;
     }
+    if(!isset($_GET['username']))
+    {
+        header('Location: /users');
+    }
 ?>
 <ul id="moredropdown" class="dropdown-content">
     <li><a href="/settings">Settings</a></li>
