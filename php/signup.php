@@ -75,7 +75,7 @@ else
 
 function generateRandomString($length)
 {
-		$characters='1234567890!@#$%^&*-=_+,.<>/?|qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+		$characters='1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
 		$charactersLength = strlen($characters);
 		$randomString = '';
 		for ($i = 0; $i < $length; $i++) {
