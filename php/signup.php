@@ -44,7 +44,6 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
                 $stmt->bind_param("isssssii",$id,$username,$password,$cookie,$ip,$email,$starter_cash,$starter_coins); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
                 $stmt->execute();
                 $stmt->close();
-                echo 'success';
                 setcookie("session",$cookie,time()+3600*24,"/");
                 $social = "INSERT INTO social (`id`, `username`, `cookie`) VALUES (?,?,?)";
                 $stmt = $conn->prepare($social);

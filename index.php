@@ -22,6 +22,10 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     {
         $cookie = $_COOKIE["session"];
         $account = $sess->Verify($_COOKIE["session"]);
+        if($account!=0)
+        {
+            header('Location: /home');
+        }
     }
     else
     {
