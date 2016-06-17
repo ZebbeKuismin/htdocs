@@ -11,16 +11,40 @@
 
 </head>
 <body style="background:#3B3F51">
-
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+    $path .= "/php/session.class.php";
+    include_once($path);
+    $sess = new Session();
+    $sess->Init();
+    if(isset($_COOKIE["session"]))
+    {
+        $cookie = $_COOKIE["session"];
+        $account = $sess->Verify($_COOKIE["session"]);
+    }
+    else
+    {
+        $account=0;
+    }
+?>
 <ul id="moredropdown" class="dropdown-content">
     <li><a href="/settings">Settings</a></li>
     <li><a href="/exchange">Exchange</a></li>
     <li class="divider"></li>
-    <li><a id="logout">Logout</a></li>
+    <?php
+            if($account==0)
+            {
+                echo '<li><a href="/">Login</a></li>';
+            }
+            else
+            {
+                echo '<li><a id="logout">Logout</a></li>';
+            }
+    ?>
 </ul>
 <nav>
     <div class="nav-wrapper">
-    <a href="/" class="brand-logo">Magicus</a> 
+    <a href="/" class="brand-logo">Magicus</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/home">Home</a></li>
@@ -39,7 +63,16 @@
             <li><a href="/settings">Settings</a></li>
             <li><a href="/exchange">Exchange</a></li>
             <li class="divider"></li>
-            <li><a id="logout">Logout</a></li>
+            <?php
+            if($account==0)
+            {
+                echo '<li><a href="/">Login</a></li>';
+            }
+            else
+            {
+                echo '<li><a id="logout">Logout</a></li>';
+            }
+            ?>
         </ul>
     </div>
 </nav>
@@ -63,25 +96,64 @@
     <?php
     if(isset($_GET['username']))
     {
-        echo '<div id="results" class="col s10 offset-s1">
-            <div class="col s3">
-                <div class="card" style="overflow: hidden;">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="/profileimages/B.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">beaujibby<i class="material-icons right">more_vert</i></span>
-                    </div>
-                    <div class="card-action">
-                        <a href="/users/profile?username=beaujibby">View Profile</a>
-                    </div>
-                    <div class="card-reveal" style="display: none; transform: translateY(0px);">
-                        <span class="card-title grey-text text-darken-4">beaujibby<i class="material-icons right">close</i></span>
-                        <p>Cookies are the best, not from the west, I\'m gonna pass this test, and then I\'ll beat the rest...</p>
-                    </div>
-                </div>
-            </div>
-        </div>';
+        echo "<div id='results' class='col s10 offset-s1'>";
+        $username_wildcard='%'.$_GET['username'].'%';
+        $users = array();
+        $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
+        if ($conn->connect_error)
+        {
+            trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+            echo 'unable to connect to database';
+        }
+
+        $query = "SELECT username FROM accounts WHERE username LIKE ?";
+        $stmt = $conn->prepare($query);
+        if ($stmt)
+        {   
+            $stmt->bind_param("s", $username_wildcard); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+            $stmt->execute();
+            $stmt->bind_result($username_result);
+            $users=array();
+            while($stmt->fetch())
+            {
+                $users[]=$username_result;
+            }
+            $stmt->close();
+            foreach($users as $username_result)
+            {
+            $query = "SELECT blurb FROM social WHERE username = ?";
+                $blurb_stmt = $conn->prepare($query);
+                if ($blurb_stmt)
+                {
+                    $blurb_stmt->bind_param("s", $username_result); /* s = string, i = integer, d = double,  b = blob */
+                    $blurb_stmt->execute();
+                    $blurb_stmt->bind_result($blurb_result);
+                    $blurb_stmt->fetch();
+                    $img = strtoupper(substr($username_result,0,1));
+                    echo "<div class='col s3'>
+                            <div class='card' style='overflow: hidden;'>
+                                <div class='card-image waves-effect waves-block waves-light'>
+                                    <img class='activator' src='/profileimages/$img.png'>
+                                </div>
+                                <div class='card-content'>
+                                    <span class='card-title activator grey-text text-darken-4'>$username_result
+                                        <i class='material-icons right'>more_vert</i>
+                                    </span>
+                                </div>
+                                <div class='card-action'>
+                                    <a href='/users/profile?username=$username_result'>View Profile</a>
+                                </div>
+                                <div class='card-reveal' style='display: none; transform: translateY(0px);'>
+                                    <span class='card-title grey-text text-darken-4'>$username_result<i class='material-icons right'>close</i></span>
+                                    <p>$blurb_result</p>
+                                </div>
+                            </div>
+                        </div>";
+                $blurb_stmt->close();
+                }
+            }
+        }
+        echo "</div>";
     }
     ?>
     <!--?php

@@ -12,28 +12,40 @@
 </head>
 <body style = "background-color:#3B3F51">
     
-<?php 
-    $path = $_SERVER['DOCUMENT_ROOT'];
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/php/session.class.php";
     include_once($path);
     $sess = new Session();
     $sess->Init();
     if(isset($_COOKIE["session"]))
     {
+        $cookie = $_COOKIE["session"];
         $account = $sess->Verify($_COOKIE["session"]);
-        if($account!=0){header('Location: /home');}
+    }
+    else
+    {
+        $account=0;
     }
 ?>
-
 <ul id="moredropdown" class="dropdown-content">
     <li><a href="/settings">Settings</a></li>
     <li><a href="/exchange">Exchange</a></li>
     <li class="divider"></li>
-    <li><a id="logout">Logout</a></li>
+    <?php
+            if($account==0)
+            {
+                echo '<li><a href="/">Login</a></li>';
+            }
+            else
+            {
+                echo '<li><a id="logout">Logout</a></li>';
+            }
+    ?>
 </ul>
 <nav>
     <div class="nav-wrapper">
-    <a href="/" class="brand-logo">Magicus</a> 
+    <a href="/" class="brand-logo">Magicus</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/home">Home</a></li>
@@ -52,7 +64,16 @@
             <li><a href="/settings">Settings</a></li>
             <li><a href="/exchange">Exchange</a></li>
             <li class="divider"></li>
-            <li><a id="logout">Logout</a></li>
+            <?php
+            if($account==0)
+            {
+                echo '<li><a href="/">Login</a></li>';
+            }
+            else
+            {
+                echo '<li><a id="logout">Logout</a></li>';
+            }
+            ?>
         </ul>
     </div>
 </nav>

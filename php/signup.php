@@ -37,7 +37,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
             $id+=1;
             $ip=$_SERVER['REMOTE_ADDR'];
             $cookie=generateRandomString(100);
-            $query = "INSERT INTO accounts (`id`, `username`, `password`, `cookie`, `ip`, `email`) VALUES (?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO accounts (`id`, `username`, `password`, `cookie`, `ip`, `email`,`cash`,`coins`) VALUES (?,?,?,?,?,?,?,?)";
             $stmt = $conn->prepare($query);
             if ($stmt)
             {

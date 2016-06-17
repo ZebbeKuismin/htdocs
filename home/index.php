@@ -57,7 +57,16 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             <li><a href="/settings">Settings</a></li>
             <li><a href="/exchange">Exchange</a></li>
             <li class="divider"></li>
-            <li><a id="logout">Logout</a></li>
+            <?php
+            if($account==0)
+            {
+                echo '<li><a href="/">Login</a></li>';
+            }
+            else
+            {
+                echo '<li><a id="logout">Logout</a></li>';
+            }
+            ?>
         </ul>
     </div>
 </nav>
@@ -91,16 +100,16 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     <div class="card col s10 offset-s1" style="color:#3B3F51">
         <ul class="collection with-header">
             <li class="collection-header"><h4 style="color:#3B3F51">Notifications</h4></li>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Messages
+            <a href="/home/messages" class="collection-item" style="color:#3B3F51;font-size:1rem">Messages
                 <span class="badge" style="color:#3B3F51">4</span>
             </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Friends Online
+            <a href="/home/friends" class="collection-item" style="color:#3B3F51;font-size:1rem">Friends Online
                 <span class="badge" style="color:#3B3F51">4</span>
             </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">New Items
+            <a href="/catalog" class="collection-item" style="color:#3B3F51;font-size:1rem">New Items
                 <span class="badge" style="color:#3B3F51">4</span>
             </a>
-            <a href="#!" class="collection-item" style="color:#3B3F51;font-size:1rem">Forum Replies
+            <a href="/forum" class="collection-item" style="color:#3B3F51;font-size:1rem">Forum Replies
                 <span class="badge" style="color:#3B3F51">4</span>
             </a>
         </ul>

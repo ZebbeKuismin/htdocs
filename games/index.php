@@ -7,15 +7,40 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/materialize.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
 
 </head>
 <body style="background:#3B3F51">
-
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+    $path .= "/php/session.class.php";
+    include_once($path);
+    $sess = new Session();
+    $sess->Init();
+    if(isset($_COOKIE["session"]))
+    {
+        $cookie = $_COOKIE["session"];
+        $account = $sess->Verify($_COOKIE["session"]);
+    }
+    else
+    {
+        $account=0;
+    }
+?>
 <ul id="moredropdown" class="dropdown-content">
     <li><a href="/settings">Settings</a></li>
     <li><a href="/exchange">Exchange</a></li>
     <li class="divider"></li>
-    <li><a id="logout">Logout</a></li>
+    <?php
+            if($account==0)
+            {
+                echo '<li><a href="/">Login</a></li>';
+            }
+            else
+            {
+                echo '<li><a id="logout">Logout</a></li>';
+            }
+    ?>
 </ul>
 <nav>
     <div class="nav-wrapper">
@@ -38,7 +63,16 @@
             <li><a href="/settings">Settings</a></li>
             <li><a href="/exchange">Exchange</a></li>
             <li class="divider"></li>
-            <li><a id="logout">Logout</a></li>
+            <?php
+            if($account==0)
+            {
+                echo '<li><a href="/">Login</a></li>';
+            }
+            else
+            {
+                echo '<li><a id="logout">Logout</a></li>';
+            }
+            ?>
         </ul>
     </div>
 </nav>

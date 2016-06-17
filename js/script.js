@@ -7,7 +7,7 @@ $(document).ready(function(){
     $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 1000, // Creates a dropdown of 15 years to control year
-            min: new Date(1900,1,1),
+            min: new Date(1900,0,1),
             max: new Date()
     });
     $('#login-button').click(function(){
