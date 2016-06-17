@@ -1,6 +1,6 @@
 <?php
-$starter_cash=13;
-$starter_coins=31;
+$starter_cash=100;
+$starter_coins=1000;
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/php/session.class.php";
 include_once($path);
