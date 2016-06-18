@@ -54,7 +54,7 @@ $(document).ready(function(){
         });
     });
     $(".button-collapse").sideNav();
-    $('#logout').click(function(){
+    $('.logout').click(function(){
         $.ajax({
             url: "/php/logout.php", // Url to which the request is send
             type: "POST",             // Type of request to be send, called as method
@@ -70,5 +70,16 @@ $(document).ready(function(){
         {
             location.search="username="+$('#user-search-bar').val();
         }
+    });
+    $(document).on("click", ".logout", function(){
+        $.ajax({
+            url: "/php/logout.php", // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            data: {}, // data sent to php file
+            success: function(data)   // A function to be called if request succeeds
+            {
+                location.reload();
+            }
+        });
     });
 });

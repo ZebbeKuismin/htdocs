@@ -34,7 +34,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     <li><a href="/settings">Settings</a></li>
     <li><a href="/exchange">Exchange</a></li>
     <li class="divider"></li>
-    <li><a id="logout">Logout</a></li>
+    <li><a class="logout">Logout</a></li>
 </ul>
 <nav>
     <div class="nav-wrapper">
@@ -64,7 +64,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             }
             else
             {
-                echo '<li><a id="logout">Logout</a></li>';
+                echo '<li><a class="logout">Logout</a></li>';
             }
             ?>
         </ul>

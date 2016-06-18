@@ -42,7 +42,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             }
             else
             {
-                echo '<li><a id="logout">Logout</a></li>';
+                echo '<li><a class="logout">Logout</a></li>';
             }
     ?>
 </ul>
@@ -74,7 +74,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             }
             else
             {
-                echo '<li><a id="logout">Logout</a></li>';
+                echo '<li><a class="logout">Logout</a></li>';
             }
             ?>
         </ul>
