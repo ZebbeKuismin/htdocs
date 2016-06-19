@@ -7,7 +7,7 @@ $sess->Init();
 if(isset($_POST['username']) && isset($_POST['password']))
 {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = base64_encode($_POST['password']);
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
     if ($conn->connect_error)
     {

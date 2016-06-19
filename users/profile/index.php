@@ -80,7 +80,47 @@ $path = $_SERVER['DOCUMENT_ROOT'];
         </ul>
     </div>
 </nav>
-
+<?php
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
+        if ($conn->connect_error)
+        {
+            trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+            echo 'unable to connect to database';
+        }
+    $username = $_GET['username'];
+    $query = "SELECT username,id,time FROM accounts WHERE username = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt)
+    {
+        $stmt->bind_param("s", $username); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+        $stmt->execute();
+        $stmt->bind_result($username_result,$id_result,$time_result);
+        $stmt->fetch();
+        $time_result = strtok($time_result, " ");
+        $time_result = explode("-",$time_result);
+        print_r($time_result);
+        $date_joined = array('year'=>$time_result[0],'month'=>$time_result[1],'day'=>$time_result[2]);
+        $stmt->close();
+        if($username_result!='')
+        {
+        $query = "SELECT blurb FROM social WHERE username = ?";
+            $blurb_stmt = $conn->prepare($query);
+            if ($blurb_stmt)
+            {
+                $blurb_stmt->bind_param("s", $username_result); /* s = string, i = integer, d = double,  b = blob */
+                $blurb_stmt->execute();
+                $blurb_stmt->bind_result($blurb_result);
+                $blurb_stmt->fetch();
+                $img_result = strtoupper(substr($username_result,0,1));
+                $blurb_stmt->close();
+            }
+        }
+        else
+        {
+            header('Location: /users');
+        }
+    }
+?>
 <div id="users" class="row">
     <div class="col s3 offset-s1">
         <img src="/images/blogo.png" style="width:100%;height:100%">
@@ -88,7 +128,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     <div class="card col s7" style="color:#3B3F51">
         <h1>beaujibby</h1>
         <div class="border" style="height:1px;background-color:#ee6e73"></div>
-        <h6 style="word-wrap:break-word">filler content filler content filler content filler content filler content filler content filler content</h6>
+        <h6 style="word-wrap:break-word"><?php echo $blurb_result; ?></h6>
         <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
         <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Message</a>
         <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Add Friend</a>
@@ -108,10 +148,20 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     <div class="card col s10 offset-s1" style="color:#3B3F51">
         <h3>Statistics</h3>
         <div class="border" style="height:1px;background-color:#ee6e73"></div>
-        <div class="col s3"><h5 style="text-align:center">Date Joined</h5><h5 style="text-align:center">06 03 16</h6></div>
-        <div class="col s3"><h5 style="text-align:center">Forum Posts</h5><h5 style="text-align:center">0</h6></div>
-        <div class="col s3"><h5 style="text-align:center">Friend Count</h5><h5 style="text-align:center">0</h6></div>
-        <div class="col s3"><h5 style="text-align:center">User Number</h5><h5 style="text-align:center">1</h6></div>
+        <div class="col s3">
+            <h5 style="text-align:center">Date Joined</h5><h5 style="text-align:center">
+                <?php echo $date_joined['month'].' '.$date_joined['day'].' '.$date_joined['year']; ?>
+            </h5>
+        </div>
+        <div class="col s3">
+            <h5 style="text-align:center">Forum Posts</h5><h5 style="text-align:center"><?php echo '0'; ?></h5>
+        </div>
+        <div class="col s3">
+            <h5 style="text-align:center">Friend Count</h5><h5 style="text-align:center"><?php echo '0'; ?></h5>
+        </div>
+        <div class="col s3">
+            <h5 style="text-align:center">User Number</h5><h5 style="text-align:center"><?php echo $id_result; ?></h5>
+        </div>
     </div>
 </div>
 
