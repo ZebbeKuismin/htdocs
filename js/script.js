@@ -71,6 +71,35 @@ $(document).ready(function(){
             location.search="username="+$('#user-search-bar').val();
         }
     });
+    $('#user-search-bar').keydown(function (e) {
+        if (e.keyCode == 13) {
+            if($('#user-search-bar').val()!="")
+            {
+                location.search="username="+$('#user-search-bar').val();
+            }
+        }
+    });
+    $('#status').keydown(function (e) {
+        if (e.keyCode == 13) {
+            if($('#status').val()!="")
+            {
+                $.ajax({
+                    url: "/php/setstatus.php", // Url to which the request is send
+                    type: "POST",             // Type of request to be send, called as method
+                    data: { status:$('#status').val()
+                    }, // data sent to php file
+                    //data: {pass:"passwordText",oldPass:"oldPass"}
+                    success: function(data)   // A function to be called if request succeeds
+                    {
+                        if(data=='success')
+                        {
+                            //location.reload();
+                        }
+                    }
+                });
+            }
+        }
+    });
     $(document).on("click", ".logout", function(){
         $.ajax({
             url: "/php/logout.php", // Url to which the request is send

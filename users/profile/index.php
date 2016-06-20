@@ -88,28 +88,27 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             echo 'unable to connect to database';
         }
     $username = $_GET['username'];
-    $query = "SELECT username,id,time FROM accounts WHERE username = ?";
+    $query = "SELECT username,id,time,posts FROM accounts WHERE username = ?";
     $stmt = $conn->prepare($query);
     if ($stmt)
     {
         $stmt->bind_param("s", $username); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
         $stmt->execute();
-        $stmt->bind_result($username_result,$id_result,$time_result);
+        $stmt->bind_result($username_result,$id_result,$time_result,$posts_result);
         $stmt->fetch();
         $time_result = strtok($time_result, " ");
         $time_result = explode("-",$time_result);
-        print_r($time_result);
         $date_joined = array('year'=>$time_result[0],'month'=>$time_result[1],'day'=>$time_result[2]);
         $stmt->close();
         if($username_result!='')
         {
-        $query = "SELECT blurb FROM social WHERE username = ?";
+        $query = "SELECT blurb,status,friends,count FROM social WHERE username = ?";
             $blurb_stmt = $conn->prepare($query);
             if ($blurb_stmt)
             {
                 $blurb_stmt->bind_param("s", $username_result); /* s = string, i = integer, d = double,  b = blob */
                 $blurb_stmt->execute();
-                $blurb_stmt->bind_result($blurb_result);
+                $blurb_stmt->bind_result($blurb_result,$status_result,$friends_data,$friends_count);
                 $blurb_stmt->fetch();
                 $img_result = strtoupper(substr($username_result,0,1));
                 $blurb_stmt->close();
@@ -123,10 +122,16 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 ?>
 <div id="users" class="row">
     <div class="col s3 offset-s1">
-        <img src="/images/blogo.png" style="width:100%;height:100%">
+        <?php echo "<img src='/profileimages/$img_result.png' style='width:100%;height:100%'>"; ?>
     </div>
     <div class="card col s7" style="color:#3B3F51">
-        <h1>beaujibby</h1>
+        <h1><?php echo $username_result; ?></h1>
+        <?php
+        if($status_result!='')
+        {
+            echo "<p style='text-style:italic'>\"$status_result\"</p>";
+        }
+        ?>
         <div class="border" style="height:1px;background-color:#ee6e73"></div>
         <h6 style="word-wrap:break-word"><?php echo $blurb_result; ?></h6>
         <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
@@ -142,7 +147,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
         <img src="/svg/program.svg" title="Made this thing">
         <img src="/svg/tank.svg" title="Crashed a tank">
         <img src="/svg/smile.svg" title="Winked at someone">
-        <img src="/svg/football.svg" title="Played footbal">
+        <img src="/svg/football.svg" title="Played football">
         <img src="/svg/bamboo.svg" title="Found some bamboo">
     </div>
     <div class="card col s10 offset-s1" style="color:#3B3F51">
@@ -154,10 +159,10 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             </h5>
         </div>
         <div class="col s3">
-            <h5 style="text-align:center">Forum Posts</h5><h5 style="text-align:center"><?php echo '0'; ?></h5>
+            <h5 style="text-align:center">Forum Posts</h5><h5 style="text-align:center"><?php echo $posts_result; ?></h5>
         </div>
         <div class="col s3">
-            <h5 style="text-align:center">Friend Count</h5><h5 style="text-align:center"><?php echo '0'; ?></h5>
+            <h5 style="text-align:center">Friend Count</h5><h5 style="text-align:center"><?php echo $friends_count; ?></h5>
         </div>
         <div class="col s3">
             <h5 style="text-align:center">User Number</h5><h5 style="text-align:center"><?php echo $id_result; ?></h5>

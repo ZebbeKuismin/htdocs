@@ -80,7 +80,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 <div id="search" class="row">
     <div class="card col s10 offset-s1">
         <h1>User Search</h1>
-        <form class="col s12">
+        <div class="col s12">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">account_circle</i>
@@ -91,7 +91,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
                     <i class="material-icons right">send</i>
                 </a>
             </div>
-        </form>
+        </div>
     </div>
     <?php
     if(isset($_GET['username']))
