@@ -91,7 +91,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             <a href="showforum?id=3" class="collection-item" style="color:#3B3F51;font-size:1rem">Suggestions &amp; Ideas
                 <span class="badge" style="color:#3B3F51">4</span>
             </a>
-            <a href="showforum?id=4" class="collection-item" style="color:#3B3F51;font-size:1rem">Forum Replies
+            <a href="showforum?id=4" class="collection-item" style="color:#3B3F51;font-size:1rem">Programmers
                 <span class="badge" style="color:#3B3F51">4</span>
             </a>
         </ul>

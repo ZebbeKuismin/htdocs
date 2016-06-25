@@ -111,4 +111,46 @@ $(document).ready(function(){
             }
         });
     });
+    $('#thread-button').click(function(){
+        var dataArray = $('#new-thread').serializeArray(),
+        len = dataArray.length,
+        dataObj = {};
+        for(i=0; i<len; i++) {
+            dataObj[dataArray[i].name] = dataArray[i].value;
+        }
+        $.ajax({
+            url: "/php/newthread.php"+location.search, // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            data: { title:dataObj['title'],body:dataObj['body']}, // data sent to php file
+            //data: {pass:"passwordText",oldPass:"oldPass"}
+            success: function(data)   // A function to be called if request succeeds
+            {
+                if(data=='success')
+                {
+                    location.pathname="/forum/showforum";
+                }
+            }
+        });
+    });
+    $('#reply-button').click(function(){
+        var dataArray = $('#new-reply').serializeArray(),
+        len = dataArray.length,
+        dataObj = {};
+        for(i=0; i<len; i++) {
+            dataObj[dataArray[i].name] = dataArray[i].value;
+        }
+        $.ajax({
+            url: "/php/newreply.php"+location.search, // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            data: {body:dataObj['body']}, // data sent to php file
+            //data: {pass:"passwordText",oldPass:"oldPass"}
+            success: function(data)   // A function to be called if request succeeds
+            {
+                if(data=='success')
+                {
+                    location.pathname="/forum/viewthread";
+                }
+            }
+        });
+    });
 });

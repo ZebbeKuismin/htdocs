@@ -156,20 +156,6 @@ $path = $_SERVER['DOCUMENT_ROOT'];
         echo "</div>";
     }
     ?>
-    <!--?php
-        if(isset($_GET['username']))
-        {
-            echo '<div class="col s10 offset-s1">
-                <div class="white col s6" style="border:1px solid #3B3F51">
-                <img src="/profileimages/B.png" style="width:35px;height:35px;float:left">
-                <h4>beaujibby</h4>
-                </div>
-                <div class="white col s6" style="border:1px solid #3B3F51">
-                    <h4>beaujibby</h4>
-                </div>
-            </div>';
-        }
-    ?-->
 </div>
 
 <footer class="page-footer">
@@ -185,7 +171,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 <li><a class="grey-text text-lighten-3" href="about">About</a></li>
 <li><a class="grey-text text-lighten-3" href="mailto:beaujibby@gmail.com">Contact Us</a></li>
 <li><a class="grey-text text-lighten-3" href="https://en.wikipedia.org/wiki/Boredom">Legal</a></li>
-<li><a class="grey-text text-lighten-3" href="creators">Creators</a></li>
+<li><a class="grey-text text-lighten-3" href="/creators">Creators</a></li>
 </ul>
 </div>
 </div>

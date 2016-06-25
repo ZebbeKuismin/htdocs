@@ -37,43 +37,38 @@ $path = $_SERVER['DOCUMENT_ROOT'];
         trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
         echo 'unable to connect to database';
     }
-    $query = "SELECT id, name, description, threads FROM forums WHERE id = ?";
+    $query = "SELECT id, forum_id, title FROM threads WHERE id = ?";
     $stmt = $conn->prepare($query);
     if ($stmt)
     {
         $stmt->bind_param("s", $id_get); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
         $stmt->execute();
-        $stmt->bind_result($id_result, $name_result, $description_result, $threads_result);
+        $stmt->bind_result($thread_id_result, $forum_id_result, $thread_title_result);
         $stmt->fetch();
         $stmt->close();
-        if(!($id_result==$id_get))
+        if(!($thread_id_result==$id_get))
         {
             header('Location: /forum');
         }
     }
-    else
-    {
-        trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
-    }
-    $query = "SELECT id, poster, poster_id, title, body, updated FROM threads WHERE forum_id = ? ORDER BY updated DESC";
+    $query = "SELECT id, name, description FROM forums WHERE id = ?";
     $stmt = $conn->prepare($query);
     if ($stmt)
     {
-        $stmt->bind_param("s", $id_get); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
+        $stmt->bind_param("i", $forum_id_result); /* Bind parameters. Types: s = string, i = integer, d = double,  b = blob */
         $stmt->execute();
-        $stmt->bind_result($thread_id_result, $thread_poster_result, $thread_poster_id, $thread_title_result, $thread_body_result, $thread_updated_result);
-        $threads_arr=array();
-        while($stmt->fetch())
-        {
-            $thread_arr=array('id'=>$thread_id_result,'poster'=>$thread_poster_result, 'poster_id'=>$thread_poster_id,'title'=>$thread_title_result,'body'=>$thread_body_result,'updated'=>$thread_updated_result);
-            $threads[]=$thread_arr;
-        }
+        $stmt->bind_result($id_result, $name_result, $description_result);
+        $stmt->fetch();
         $stmt->close();
     }
     else
     {
         trigger_error('Statement failed : ' . $stmt->error, E_USER_ERROR);
     }
+    }
+    else
+    {
+        header('Location: /forum');
     }
 ?>
 <ul id="moredropdown" class="dropdown-content">
@@ -129,56 +124,18 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 </nav>
 
 <div id="forum" class="row">
-    <div class="card col s10 offset-s1">
-        <h1><?php echo $name_result; ?></h1>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
-        <h5><?php echo $description_result; ?></h5>
-        <?php 
-            echo "<a style='background-color:#ee6e73' href='/forum/newthread?id=$id_get' class='btn waves-effect waves-light'>New Thread</a>";
-        ?>
-        <table class="bordered highlight responsive-table">
-            <thead>
-                <tr>
-                    <th data-field="id">Name</th>
-                    <th data-field="name">Author</th>
-                    <th data-field="price">Replies</th>
-                    <th data-field="price">Last Post</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php
-                if(isset($threads)){
-                    foreach ($threads as $thread)
-                    {
-                        $thread_id = $thread['id'];
-                        $thread_poster = $thread['poster'];
-                        $thread_poster_id = $thread['poster_id'];
-                        $thread_title = $thread['title'];
-                        $thread_body = $thread['body'];
-                        $thread_updated = $thread['updated'];
-                        echo "<tr class='thread-col' data-href='/forum/viewthread?id=$thread_id'>";
-                        echo "<td>$thread_title</td>";
-                        echo "<td>$thread_poster</td>";
-                        $query = "SELECT COUNT(*) FROM replies WHERE thread_id=?";
-                        $blurb_stmt = $conn->prepare($query);
-                        if ($blurb_stmt)
-                        {
-                        $blurb_stmt->bind_param("i", $thread_id); /* s = string, i = integer, d = double,  b = blob */
-                        $blurb_stmt->execute();
-                        $blurb_stmt->bind_result($thread_replies);
-                        $blurb_stmt->fetch();
-                        $blurb_stmt->close();
-                        echo "<td>$thread_replies</td>";
-                        }
-                        echo "<td>$thread_updated</td>";
-                    }
-                }
-                $conn->close();
-                ?>
-            </tbody>
-        </table>
-    </div>
+    <form id="new-reply" class="card col s10 offset-s1" style="color:#3B3F51">
+        <h1><?php echo $thread_title_result; ?></h1>
+        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <br>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="body" name="body" class="materialize-textarea" length="1000"></textarea>
+            <label for="body">Body</label>
+          </div>
+        </div>
+        <a style="background-color:#ee6e73;margin-bottom:10px" id="reply-button" class="btn waves-effect waves-light">Add Reply</a>
+      </form>
 </div>
 
 <footer class="page-footer">
@@ -191,7 +148,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 <div class="col l4 offset-l2 s12">
 <h5 class="white-text">Links</h5>
 <ul>
-<li><a class="grey-text text-lighten-3" href="/about">About</a></li>
+<li><a class="grey-text text-lighten-3" href="about">About</a></li>
 <li><a class="grey-text text-lighten-3" href="mailto:beaujibby@gmail.com">Contact Us</a></li>
 <li><a class="grey-text text-lighten-3" href="https://en.wikipedia.org/wiki/Boredom">Legal</a></li>
 <li><a class="grey-text text-lighten-3" href="/creators">Creators</a></li>
