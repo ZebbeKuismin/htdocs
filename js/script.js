@@ -153,4 +153,25 @@ $(document).ready(function(){
             }
         });
     });
+    $('#settings-button').click(function(){
+        var dataArray = $('#settings-form').serializeArray(),
+        len = dataArray.length,
+        dataObj = {};
+        for(i=0; i<len; i++) {
+            dataObj[dataArray[i].name] = dataArray[i].value;
+        }
+        $.ajax({
+            url: "/php/updatesettings.php", // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            data: {blurb:dataObj['blurb']}, // data sent to php file
+            //data: {pass:"passwordText",oldPass:"oldPass"}
+            success: function(data)   // A function to be called if request succeeds
+            {
+                if(data=='success')
+                {
+                    location.pathname="/home";
+                }
+            }
+        });
+    });
 });

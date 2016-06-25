@@ -7,6 +7,7 @@ $sess->Init();
 if(isset($_POST['body']) && isset($_GET['id']) && $_POST['body']!='' && is_numeric($_GET['id']))
 {
     $body = $_POST['body'];
+    $body=nl2br($body);
     $cookie= $_COOKIE['session'];
     $thread_id=$_GET['id'];
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
