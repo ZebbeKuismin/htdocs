@@ -95,7 +95,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
         <br>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="blurb" name="blurb" class="materialize-textarea" length="1000"><?php echo $blurb_result; ?></textarea>
+            <textarea id="blurb" name="blurb" class="materialize-textarea" length="1000"><?php echo htmlspecialchars($blurb_result); ?></textarea>
             <label for="blurb">Blurb</label>
           </div>
         </div>

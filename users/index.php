@@ -129,6 +129,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
                     $blurb_stmt->execute();
                     $blurb_stmt->bind_result($blurb_result);
                     $blurb_stmt->fetch();
+                    $blurb_result=nl2br(htmlspecialchars($blurb_result));
                     $img = strtoupper(substr($username_result,0,1));
                     echo "<div class='col s3'>
                             <div class='card' style='overflow: hidden;'>

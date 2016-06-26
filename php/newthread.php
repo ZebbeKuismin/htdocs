@@ -8,7 +8,6 @@ if(isset($_POST['title']) && isset($_POST['body']) && isset($_GET['id']) && $_PO
 {
     $title = $_POST['title'];
     $body = $_POST['body'];
-    $body=nl2br($body);
     $cookie= $_COOKIE['session'];
     $forum_id=$_GET['id'];
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);

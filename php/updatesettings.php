@@ -8,7 +8,6 @@ $cookie = $_COOKIE["session"];
 if(isset($_POST['blurb']))
 {
     $blurb = $_POST['blurb'];
-    $blurb=nl2br($blurb);
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_TABLE);
     if ($conn->connect_error)
     {

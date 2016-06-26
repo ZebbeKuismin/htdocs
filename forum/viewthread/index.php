@@ -161,7 +161,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             <tr class="message-col">
                 <td style="border-right:1px solid;width:100px;border-color:#C5C5C5">
                 <h5><?php echo $thread_poster_result; ?></h5><h6><?php echo $poster_time_result; ?></h6><h6><?php echo $posts_result.' Posts';?></h6></td>
-                <td><?php echo htmlspecialchars($thread_body_result); ?></td>
+                <td><?php echo nl2br(htmlspecialchars($thread_body_result)); ?></td>
             </tr>
             <?php
                 if(isset($replies))
@@ -187,8 +187,8 @@ $path = $_SERVER['DOCUMENT_ROOT'];
                         $stmt->close();
                         $reply_time_result = $date_joined['month'].' '.$date_joined['day'].' '.$date_joined['year'];
                     }
-                    $reply_body=htmlspecialchars($reply_body);
-                    $reply_poster=htmlspecialchars($reply_poster);
+                    $reply_body=nl2br(htmlspecialchars($reply_body));
+                    $reply_poster=nl2br(htmlspecialchars($reply_poster));
                     
                     echo "<tr class='message-col'>
                 <td style='border-right:1px solid;width:100px;border-color:#C5C5C5'>

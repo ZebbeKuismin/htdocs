@@ -129,8 +129,10 @@ $path = $_SERVER['DOCUMENT_ROOT'];
         <?php
         if($status_result!='')
         {
+            $status_result = nl2br(htmlspecialchars($status_result));
             echo "<p style='text-style:italic'>\"$status_result\"</p>";
         }
+        $blurb_result = nl2br(htmlspecialchars($blurb_result));
         ?>
         <div class="border" style="height:1px;background-color:#ee6e73"></div>
         <h6 style="word-wrap:break-word"><?php echo $blurb_result; ?></h6>
