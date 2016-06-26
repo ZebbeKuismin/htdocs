@@ -144,7 +144,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 
     <div class="card col s10 offset-s1" style="color:#3B3F51">
         <h3>Achievements</h3>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <div class="border" style="height:1px;background-color:#660198"></div>
         <img src="/svg/gameboy.svg" title="From the 80s">
         <img src="/svg/program.svg" title="Made this thing">
         <img src="/svg/tank.svg" title="Crashed a tank">
@@ -154,7 +154,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     </div>
     <div class="card col s10 offset-s1" style="color:#3B3F51">
         <h3>Statistics</h3>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <div class="border" style="height:1px;background-color:#660198"></div>
         <div class="col s3">
             <h5 style="text-align:center">Date Joined</h5><h5 style="text-align:center">
                 <?php echo $date_joined['month'].' '.$date_joined['day'].' '.$date_joined['year']; ?>
