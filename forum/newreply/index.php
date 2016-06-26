@@ -87,7 +87,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     ?>
 </ul>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" style="background-color:#660198">
     <a href="/" class="breadcrumb">Magicus</a>
         <a href="/forum" class="breadcrumb">Forum</a>
         <?php if(isset($_GET['id'])){echo '<a href="/forum/showforum?id='.$_GET['id'].'" class="breadcrumb">'.$name_result.'</a>';}?>   
@@ -126,7 +126,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 <div id="forum" class="row">
     <form id="new-reply" class="card col s10 offset-s1" style="color:#3B3F51">
         <h1><?php echo $thread_title_result; ?></h1>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <div class="border" style="height:1px;background-color:#660198"></div>
         <br>
         <div class="row">
           <div class="input-field col s12">
@@ -134,11 +134,11 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             <label for="body">Body</label>
           </div>
         </div>
-        <a style="background-color:#ee6e73;margin-bottom:10px" id="reply-button" class="btn waves-effect waves-light">Add Reply</a>
+        <a style="background-color:#660198;margin-bottom:10px" id="reply-button" class="btn waves-effect waves-light">Add Reply</a>
       </form>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer" style="background-color:#660198">
 <div class="container"> <!--Remove style later-->
 <div class="row">
 <div class="col l6 s12">

@@ -54,7 +54,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     <li><a class="logout">Logout</a></li>
 </ul>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" style="background-color:#660198">
     <a href="/" class="brand-logo">Magicus</a>  
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -91,7 +91,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 <div id="forum" class="row">
     <form id="settings-form" class="card col s10 offset-s1" style="color:#3B3F51">
         <h1>Settings</h1>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <div class="border" style="height:1px;background-color:#660198"></div>
         <br>
         <div class="row">
           <div class="input-field col s12">
@@ -99,11 +99,11 @@ $path = $_SERVER['DOCUMENT_ROOT'];
             <label for="blurb">Blurb</label>
           </div>
         </div>
-        <a style="background-color:#ee6e73;margin-bottom:10px;float:right" id="settings-button" class="btn waves-effect waves-light">Save Changes</a>
+        <a style="background-color:#660198;margin-bottom:10px;float:right" id="settings-button" class="btn waves-effect waves-light">Save Changes</a>
       </form>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer" style="background-color:#660198">
 <div class="container"> <!--Remove style later-->
 <div class="row">
 <div class="col l6 s12">

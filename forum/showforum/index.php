@@ -92,7 +92,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     ?>
 </ul>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" style="background-color:#660198">
     <a href="/" class="breadcrumb">Magicus</a>
         <a href="/forum" class="breadcrumb">Forum</a>
         <?php if(isset($_GET['id'])){echo '<a href="/forum/showforum?id='.$_GET['id'].'" class="breadcrumb">'.$name_result.'</a>';}?>   
@@ -131,10 +131,10 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 <div id="forum" class="row">
     <div class="card col s10 offset-s1">
         <h1><?php echo $name_result; ?></h1>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
+        <div class="border" style="height:1px;background-color:#660198"></div><br>
         <h5><?php echo $description_result; ?></h5>
         <?php 
-            echo "<a style='background-color:#ee6e73' href='/forum/newthread?id=$id_get' class='btn waves-effect waves-light'>New Thread</a>";
+            echo "<a style='background-color:#660198' href='/forum/newthread?id=$id_get' class='btn waves-effect waves-light'>New Thread</a>";
         ?>
         <table class="bordered highlight responsive-table">
             <thead>
@@ -181,7 +181,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     </div>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer" style="background-color:#660198">
 <div class="container"> <!--Remove style later-->
 <div class="row">
 <div class="col l6 s12">

@@ -48,7 +48,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     ?>
 </ul>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" style="background-color:#660198">
     <a href="/" class="brand-logo">Magicus</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -85,8 +85,8 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 <div class="row" style="background: url('/images/loginscreen.png');background-size:cover;min-height:800px">
     <div class="col s6 offset-s5">
         <ul class="tabs">
-            <li class="tab col s2"><a class="active" href="#login">Login</a></li>
-            <li class="tab col s2"><a href="#signup">Sign Up</a></li>
+            <li class="tab col s2"><a class="active" href="#login" style="color:#660198">Login</a></li>
+            <li class="tab col s2"><a href="#signup" style="color:#660198">Sign Up</a></li>
         </ul>
     </div>
     <div id="login" class="card col s6 offset-s5">
@@ -103,7 +103,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
                     <input id="icon_lock" type="password" class="validate" name="password">
                     <label for="icon_lock">Password</label>
                 </div>
-                <a style="background-color:#ee6e73" id="login-button" class="btn waves-effect waves-light">Login</a>
+                <a style="background-color:#660198" id="login-button" class="btn waves-effect waves-light">Login</a>
             </div>
         </form>
     </div>
@@ -136,13 +136,13 @@ $path = $_SERVER['DOCUMENT_ROOT'];
                     <input id="birthday" type="date" class="datepicker" name="birthday">
                     <label for="birthday">Birthday</label>
                 </div>
-                <a style="background-color:#ee6e73" id="signup-button" class="btn waves-effect waves-light">Create Account</a>
+                <a style="background-color:#660198" id="signup-button" class="btn waves-effect waves-light">Create Account</a>
             </div>
         </form>
     </div>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer" style="background-color:#660198">
 <div class="container"> <!--Remove style later-->
 <div class="row">
 <div class="col l6 s12">

@@ -47,7 +47,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     ?>
 </ul>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" style="background-color:#660198">
     <a href="/" class="brand-logo">Magicus</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -134,11 +134,11 @@ $path = $_SERVER['DOCUMENT_ROOT'];
         }
         $blurb_result = nl2br(htmlspecialchars($blurb_result));
         ?>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <div class="border" style="height:1px;background-color:#660198"></div>
         <h6 style="word-wrap:break-word"><?php echo $blurb_result; ?></h6>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div><br>
-        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Message</a>
-        <a style="background-color:#ee6e73" href="#!" class="btn waves-effect waves-light">Add Friend</a>
+        <div class="border" style="height:1px;background-color:#660198"></div><br>
+        <a style="background-color:#660198" href="#!" class="btn waves-effect waves-light">Message</a>
+        <a style="background-color:#660198" href="#!" class="btn waves-effect waves-light">Add Friend</a>
         <div style="height:10px"></div>
     </div>
 
@@ -172,7 +172,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     </div>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer" style="background-color:#660198">
 <div class="container"> <!--Remove style later-->
 <div class="row">
 <div class="col l6 s12">

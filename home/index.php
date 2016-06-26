@@ -37,7 +37,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     <li><a class="logout">Logout</a></li>
 </ul>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" style="background-color:#660198">
     <a href="/" class="brand-logo">Magicus</a>  
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -80,7 +80,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     </div>
     <div class="card col s7" style="color:#3B3F51">
         <h1>Hello <?php echo $sess->getUsername($cookie); ?></h1>
-        <div class="border" style="height:1px;background-color:#ee6e73"></div>
+        <div class="border" style="height:1px;background-color:#660198"></div>
         <br>
         <div class="input-field col s7">
             <input id="status" type="text" class="validate">
@@ -133,7 +133,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     </div>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer" style="background-color:#660198">
 <div class="container"> <!--Remove style later-->
 <div class="row">
 <div class="col l6 s12">

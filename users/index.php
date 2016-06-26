@@ -43,7 +43,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     ?>
 </ul>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" style="background-color:#660198">
     <a href="/" class="brand-logo">Magicus</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -87,7 +87,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
                     <input id="user-search-bar" type="text" class="validate">
                     <label for="user-search-bar">Username</label>
                 </div>
-                <a id="user-search-button" class="btn waves-effect waves-light" type="submit" name="username" style="background-color:#ee6e73">Search
+                <a id="user-search-button" class="btn waves-effect waves-light" type="submit" name="username" style="background-color:#660198">Search
                     <i class="material-icons right">send</i>
                 </a>
             </div>
@@ -159,7 +159,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
     ?>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer" style="background-color:#660198">
 <div class="container"> <!--Remove style later-->
 <div class="row">
 <div class="col l6 s12">
